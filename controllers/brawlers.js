@@ -97,38 +97,6 @@ function modificarBrawler(req, res) {
     });
   });
 }
-  // Brawler.findById(req.params.id).then(brwlr => {
-    
-  //   if (!brwlr) { return res.sendStatus(401); }
-
-  //   let nuevaInfo = req.body
-  //   if (typeof nuevaInfo.nombre !== 'undefined')
-  //     brwlr.nombre = nuevaInfo.nombre
-  //   if (typeof nuevaInfo.clase !== 'undefined')
-  //     brwlr.clase = nuevaInfo.clase
-  //   if (typeof nuevaInfo.tipo !== 'undefined')
-  //     brwlr.tipo = nuevaInfo.tipo
-  //   if (typeof nuevaInfo.salud !== 'undefined')
-  //     brwlr.salud = nuevaInfo.salud
-  //   if (typeof nuevaInfo.velocidad !== 'undefined')
-  //     brwlr.velocidad = nuevaInfo.velocidad
-  //   if (typeof nuevaInfo.ataque !== 'undefined')
-  //     brwlr.ataque = nuevaInfo.ataque
-  //   if (typeof nuevaInfo.damage !== 'undefined')
-  //     brwlr.damage = nuevaInfo.damage
-  //   if (typeof nuevaInfo.alcance !== 'undefined')
-  //     brwlr.alcance = nuevaInfo.alcance
-  //   if (typeof nuevaInfo.super !== 'undefined')
-  //     brwlr.super = nuevaInfo.super
-  //   if (typeof nuevaInfo.habilidades !== 'undefined')
-  //     brwlr.habilidades = nuevaInfo.habilidades
-  //   if (typeof nuevaInfo.gadgets !== 'undefined')
-  //     brwlr.gadgets = nuevaInfo.gadgets
-  //   brwlr.save().then(updateBrwlr => { //Guardando brawler modificado en MongoDB.
-  //     res.status(201).json(updateBrwlr)
-  //   }).catch(next)
-  // }).catch(next)
-//}
 
 function eliminarBrawler(req, res) {
   Brawler.findByIdAndRemove(req.params.id)
