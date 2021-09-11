@@ -3,7 +3,7 @@ const mongoose = require('mongoose'); //Importando mongoose.
 //Definiendo el objeto BrawlerSchema con el constructor Schema.
 //Definiendo cada campo con su respectivo tipo de dato.
 const BrawlerSchema = new mongoose.Schema({
- _id: { type: Schema.ObjectId, 
+ _id: { type: mongoose.SchemaTypes.ObjectId,
   auto: true 
  },
  id: Number,                              
@@ -20,6 +20,20 @@ const BrawlerSchema = new mongoose.Schema({
  damage: Number,
  alcance: String,
  super: String,
+ //  Proximamente agregar como foraneas para hacer modelos de habilidades y gadgets
+//  habilidades: [{
+//     id: Number,
+//     nombre: String
+//  }],
+//  gadgets: [{
+//     id: Number,
+//     nombre: String
+//  }],
+//  skins: [{
+//     id: Number,
+//     nombre: String,
+//     imagen: String
+//  }],
  imagen: String
 }, {
   versionKey: false
