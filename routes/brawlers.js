@@ -3,6 +3,7 @@ const router = require('express').Router();
 const {
   crearBrawler,
   obtenerBrawlers,
+  // obtenerBrawler,
   modificarBrawler,
   eliminarBrawler
 } = require('../controllers/brawlers')
@@ -25,7 +26,7 @@ router.get('/', obtenerBrawlers)
 
 /**
  * @swagger
- * /v1/brawlers/{id}:
+ * /v1/brawlers/{nombre}:
  *  get:
  *    tags:
  *    - Brawlers
@@ -42,28 +43,28 @@ router.get('/', obtenerBrawlers)
  *      200:
  *        description: Obtains one brawler
  */
- router.get('/:id', obtenerBrawlers)
+ router.get('/:nombre', obtenerBrawlers)
 
- /**
- * @swagger
- * /v1/brawlers/{nombre}:
- *  get:
- *    tags:
- *    - Brawlers
- *    summary: Get brawler by "nombre"
- *    description: Use to request a brawler by name 
- *    produces: 
- *      - application/json
- *    parameters:
- *      - in: path
- *        name: nombre
- *        description: name of the brawler
- *        required: true
- *    responses:
- *      200:
- *        description: Obtains one brawler
- */
-  router.get('/:nombre', obtenerBrawlers)
+//  /**
+//  * @swagger
+//  * /v1/brawlers/{nombre}:
+//  *  get:
+//  *    tags:
+//  *    - Brawlers
+//  *    summary: Get brawler by "nombre"
+//  *    description: Use to request a brawler by name 
+//  *    produces: 
+//  *      - application/json
+//  *    parameters:
+//  *      - in: path
+//  *        name: nombre
+//  *        description: name of the brawler
+//  *        required: true
+//  *    responses:
+//  *      200:
+//  *        description: Obtains one brawler
+//  */
+//   router.get('/:"nombre"', obtenerBrawler)
 
 /**
  * @swagger
