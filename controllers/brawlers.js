@@ -40,21 +40,23 @@ function obtenerBrawlers(req, res, next) { //Obteniendo brawler desde MongoDB.
   // console.log(req.params.id)
   // ---------------------------------------------------------------
   // Aqui se puede agregar codigo para devolver un limite de objetos
-  if (!req.params.id || !req.params.name) {
-    // sin :id, ni nombre se enlistan todos los brawlers
+  //if (!req.params.id) {
+    // sin :id se enlistan todos los brawlers
+  if(!req.params.name) {
+    // sin nombre se enlistan todos
     Brawler.find().then(brwlrs => {
       // res.send(brwlrs.id)
       res.send({ brwlrs })
     }).catch(next)
-  } else if (req.params.id) {
-    // encontrar brawler con :id 
-    Brawler.findOne({id: req.params.id}).then(brwlr => {
-      // console.log(brwlr);
-      if (!brwlr) {
-        return res.sendStatus(404);
-      }
-      res.send(brwlr)
-    }).catch(next)
+  // } else {
+  //   // encontrar brawler con :id 
+  //   Brawler.findOne({id: req.params.id}).then(brwlr => {
+  //     // console.log(brwlr);
+  //     if (!brwlr) {
+  //       return res.sendStatus(404);
+  //     }
+  //     res.send(brwlr)
+  //   }).catch(next)
   } else {
     // encontrar brawler con :nombre
     Brawler.findOne({name: req.params.name}).then(brwlr => {
