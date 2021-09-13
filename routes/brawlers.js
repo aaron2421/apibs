@@ -26,7 +26,7 @@ router.get('/', obtenerBrawlers)
 
 /**
  * @swagger
- * /v1/brawlers/{nombre}:
+ * /v1/brawlers/{query}:
  *  get:
  *    tags:
  *    - Brawlers
@@ -43,7 +43,7 @@ router.get('/', obtenerBrawlers)
  *      200:
  *        description: Obtains one brawler
  */
- router.get('/:nombre', obtenerBrawlers)
+ router.get('/:filtro', obtenerBrawlers)
 
 //  /**
 //  * @swagger

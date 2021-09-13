@@ -37,26 +37,31 @@ function crearBrawler(req, res) {
 }
 
 function obtenerBrawlers(req, res, next) { //Obteniendo brawler desde MongoDB.
-  console.log(req.params)
-  // ---------------------------------------------------------------
-  // Aqui se puede agregar codigo para devolver un limite de objetos
-  if (!req.params.nombre) {
+  // console.log(req.params)
+  // // ---------------------------------------------------------------
+  // // Aqui se puede agregar codigo para devolver un limite de objetos
+  if (!req.params.filtro) {
     //sin :id se enlistan todos los brawlers
     Brawler.find().then(brwlrs => {
       // res.send(brwlrs.id)
       res.send({ brwlrs })
     }).catch(next)
   } else {
-    // encontrar brawler con :nombre 
-    const nombre = req.params.nombre;
-    Brawler.findOne({nombre: new RegExp(`^${nombre}$`, 'i')}).then(brwlr => {
+    // encontrar brawler con :filtro de nombre, usando "like" para comparar el string completo y devolver mas resultados
+    const filtro = req.params.filtro;
+    // Brawler.find({tipo: new RegExp(`^${filtro}$`, 'i')}).then(brwlr => {
+    Brawler.find({ nombre: {$regex: filtro, $options: 'i'} }).then(brwlr => {
       // console.log(brwlr);
       if (!brwlr) {
         return res.sendStatus(404);
       }
-      res.send(brwlr)
+      res.send({brwlr})
     }).catch(next)
   }
+
+  // Brawler.find({ tipo : 'Especial'}).then(brwlrs => {
+  //   res.send({ brwlrs })
+  // })
 }
 
 // function obtenerBrawler(req, res, next) {
