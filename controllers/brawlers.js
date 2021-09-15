@@ -58,23 +58,7 @@ function obtenerBrawlers(req, res, next) { //Obteniendo brawler desde MongoDB.
       res.send({brwlr})
     }).catch(next)
   }
-
-  // Brawler.find({ tipo : 'Especial'}).then(brwlrs => {
-  //   res.send({ brwlrs })
-  // })
 }
-
-// function obtenerBrawler(req, res, next) {
-//   console.log(req.params)
-//   // encontrar brawler con :nombre
-//   Brawler.findOne({'nombre': req.params.nombre}).then(brwlr => {
-//     // console.log(brwlr);
-//     if (!brwlr) {
-//       return res.sendStatus(404);
-//     }
-//     res.send(brwlr)
-//   }).catch(next)
-// }
 
 function modificarBrawler(req, res) {
   // Validate Request
@@ -117,30 +101,17 @@ function modificarBrawler(req, res) {
 }
 
 function eliminarBrawler(req, res) {
-  Brawler.findByIdAndRemove(req.params.id)
-    .then(brawler => {
-        if(!brawler) {
-            return res.status(404).send({
-                message: "Brawler no encontrado con id " + req.params.id
-            });
-        }
-        res.send({message: "Brawler eliminado: " + brawler.nombre});
-    }).catch(err => {
-        if(err.kind === 'ObjectId' || err.name === 'NotFound') {
-            return res.status(404).send({
-                message: "Brawler no encontrado con id " + req.params.id
-            });                
-        }
-        return res.status(500).send({
-            message: "No se pudo borrar el brawler con id " + req.params.id
-        });
-    });
+  Brawler.deleteOne({id: req.params.id})
+  .then(() => {
+    return res.status(200).send({
+      message : "Brawler eliminado"
+    })
+  })
 }
 
 module.exports = {
   crearBrawler,
   obtenerBrawlers,
-  // obtenerBrawler,
   modificarBrawler,
   eliminarBrawler,
 }

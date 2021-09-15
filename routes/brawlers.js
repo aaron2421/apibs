@@ -205,10 +205,6 @@ router.put('/:id', modificarBrawler)
  *     responses:
  *       200:
  *         description: Brawler borrado
- *       400:
- *         description: "Información invalida"
- *       404:
- *         description: "Brawler no encontrado"
  */
 router.delete('/:id', eliminarBrawler)
 
