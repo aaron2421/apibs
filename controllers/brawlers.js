@@ -85,7 +85,7 @@ function modificarBrawler(req, res) {
   }
 
   // Find brawler and update it with the request body
-  Brawler.findByIdAndUpdate(req.params.id, {
+  Brawler.findOneAndUpdate(req.params.id, {
     nombre: req.body.nombre,
     clase: req.body.clase,
     tipo: req.body.tipo,
