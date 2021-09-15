@@ -179,35 +179,6 @@ router.post('/', crearBrawler)
  *              type: string
  *            super:
  *              type: string
- *            habilidades:
- *              type: array
- *              items:
- *                type: object
- *                properties:
- *                  id:
- *                    type: integer
- *                  nombre:
- *                    type: string
- *            gadgets:
- *              type: array
- *              items:
- *                type: object
- *                properties:
- *                  id:
- *                    type: integer
- *                  nombre:
- *                    type: string 
- *            skins:
- *              type: array
- *              items:
- *                type: object
- *                properties:
- *                  id:
- *                    type: integer
- *                  nombre:
- *                    type: string  
- *                  imagen:
- *                    type: string
  *            imagen:
  *              type: string   
  *    responses:
