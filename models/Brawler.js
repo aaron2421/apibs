@@ -12,7 +12,7 @@ const BrawlerSchema = new mongoose.Schema({
    enum: ['Luchador', 'Peso pesado', 'Francotirador', 'Lanzador', 'Apoyo', 'Asesino', 'Escupefuego', 'Bateador'] 
  },
  tipo: { type: String, 
-   enum: ['Recompensa de trofeos', 'Especial', 'Superespecial', 'Épico', 'Mítico', 'Legendario', 'Cromático'] 
+   enum: ['Brawler inicial', 'Recompensa de trofeos', 'Especial', 'Superespecial', 'Épico', 'Mítico', 'Legendario', 'Cromático'] 
  },
  salud: Number,
  velocidad: String,
