@@ -1,27 +1,11 @@
 // Estructura del CRUD
 const router = require('express').Router();
 const {
-  // img,
   crearBrawler,
   obtenerBrawlers,
-  // obtenerBrawler,
   modificarBrawler,
   eliminarBrawler
 } = require('../controllers/brawlers')
-
-// /**
-//  * @swagger
-//  * /v1/brawlers/upload:
-//  *  post:
-//  *    tags:
-//  *    - Brawlers
-//  *    summary: post an img
-//  *    description: Use to post an img
-//  *    responses:
-//  *      200:
-//  *        description: img posted
-//  */
-//  router.post('/upload', img)
 
 /**
  * @swagger
@@ -59,27 +43,6 @@ router.get('/', obtenerBrawlers)
  *        description: Obtains one brawler
  */
  router.get('/:filtro', obtenerBrawlers)
-
-//  /**
-//  * @swagger
-//  * /v1/brawlers/{nombre}:
-//  *  get:
-//  *    tags:
-//  *    - Brawlers
-//  *    summary: Get brawler by "nombre"
-//  *    description: Use to request a brawler by name 
-//  *    produces: 
-//  *      - application/json
-//  *    parameters:
-//  *      - in: path
-//  *        name: nombre
-//  *        description: name of the brawler
-//  *        required: true
-//  *    responses:
-//  *      200:
-//  *        description: Obtains one brawler
-//  */
-//   router.get('/:"nombre"', obtenerBrawler)
 
 /**
  * @swagger

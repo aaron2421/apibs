@@ -3,11 +3,6 @@ const mongoose = require("mongoose")
 const Brawler = mongoose.model("Brawler")
 const fs = require('fs')
 
-// function img(req, res) {
-//   console.log(req.file)
-//   res.send('uploaded')
-// }
-
 function crearBrawler(req, res) {
   //console.log(req.file)
 
@@ -121,7 +116,6 @@ function eliminarBrawler(req, res) {
 }
 
 module.exports = {
-  // img,
   crearBrawler,
   obtenerBrawlers,
   modificarBrawler,
