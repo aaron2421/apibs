@@ -1,8 +1,16 @@
 // controllers/brawlers.js
 const mongoose = require("mongoose")
 const Brawler = mongoose.model("Brawler")
+const fs = require('fs')
+
+// function img(req, res) {
+//   console.log(req.file)
+//   res.send('uploaded')
+// }
 
 function crearBrawler(req, res) {
+  //console.log(req.file)
+
   // Validate request
   if(!req.body) {
     return res.status(400).send({
@@ -12,7 +20,6 @@ function crearBrawler(req, res) {
 
   // Create a Brawler
   const brawler = new Brawler({
-    id: req.body.id,
     nombre: req.body.nombre,
     clase: req.body.clase,
     tipo: req.body.tipo,
@@ -22,12 +29,16 @@ function crearBrawler(req, res) {
     damage: req.body.damage,
     alcance: req.body.alcance,
     super: req.body.super,
-    imagen: req.body.imagen,
+    imagen: {
+      data: fs.readFileSync('public/images/' + req.file.originalname),
+      contentType: 'image/png'
+    }
   });
 
   // Save Brawler in the database
   brawler.save()
   .then(data => {
+    console.log(data)
     res.status(201).send(data);
   }).catch(err => {
     res.status(500).send({
@@ -110,6 +121,7 @@ function eliminarBrawler(req, res) {
 }
 
 module.exports = {
+  // img,
   crearBrawler,
   obtenerBrawlers,
   modificarBrawler,

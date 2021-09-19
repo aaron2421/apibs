@@ -20,6 +20,7 @@ const BrawlerSchema = new mongoose.Schema({
  damage: Number,
  alcance: String,
  super: String,
+
  //  Proximamente agregar como foraneas para hacer modelos de habilidades y gadgets
 //  habilidades: [{
 //     id: Number,
@@ -34,7 +35,10 @@ const BrawlerSchema = new mongoose.Schema({
 //     nombre: String,
 //     imagen: String
 //  }],
- imagen: String
+ imagen: {
+   data: Buffer,
+   contentType: String
+ }
 }, {
   versionKey: false
 });  

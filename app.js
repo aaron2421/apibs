@@ -3,7 +3,9 @@ require('dotenv').config();
 
 // Importamos las bibliotecas necesarias
 const express = require('express'),
-      cors = require('cors');
+      cors = require('cors'),
+      path = require('path'),
+      multer = require('multer');
 
 // Objeto global de la app
 const app = express();
@@ -37,6 +39,27 @@ const swaggerDocs = swaggerJsDoc(swaggerOptions);
 app.use('/v1/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocs));
 
 // configuración de middlewares
+const storage = multer.diskStorage({
+  destination: 'public/images',
+  filename: (req, file, cb) => {
+    cb(null, file.originalname);
+  }
+});
+
+app.use(multer({
+  storage,
+  dest: 'public/images',
+  fileFilter: (req, file, cb) => {
+    const filetypes = /png/;
+    const mimetype = filetypes.test(file.mimetype);
+    const extname = filetypes.test(path.extname(file.originalname));
+    if(mimetype && extname) {
+      return cb(null, true);
+    }
+    cb('Error: el archivo debe ser una imagen formato png');
+  }
+}).single('image'));
+app.use(express.static('public'));
 app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
